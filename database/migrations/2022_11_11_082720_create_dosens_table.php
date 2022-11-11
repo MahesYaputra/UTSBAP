@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateDosensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +12,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vmhs_term_test3', function (Blueprint $table) {
-            $table->id();
+        Schema::create('dosens', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
-        });
+            $table->string('idDosen')->nullable();
+            $table->string('Nama')->nullable();
+            $table->string('Tahun_masuk')->nullable();
+            });
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vmhs_term_test3');
+        Schema::drop('dosens');
     }
-};
+}
